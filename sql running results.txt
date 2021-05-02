@@ -1,0 +1,180 @@
+SELECT COUNT(OrderID) 
+FROM Orders
+WHERE ShipperID = 1;
+
+Result:
+Number of Records: 1
+COUNT(OrderID)
+54  # 54 orders were shipped by Speedy Express in total
+
+SELECT COUNT(OrderID), EmployeeID
+FROM Orders
+GROUP BY EmployeeID;
+
+Result:
+Number of Records: 9
+COUNT(OrderID)	EmployeeID
+29	1
+20	2
+31	3
+40	4
+11	5
+18	6
+14	7
+
+SELECT LastName FROM Employees
+WHERE EmployeeID = 4;
+
+Result:
+Number of Records: 1
+LastName
+Peacock #Last name of the employee with the most orders
+
+SELECT CustomerID, Country
+FROM Customers
+WHERE Country= "Germany";
+
+Result:
+Number of Records: 11
+CustomerID	Country
+1	Germany
+6	Germany
+17	Germany
+25	Germany
+39	Germany
+44	Germany
+52	Germany
+56	Germany
+63	Germany
+79	Germany
+86	Germany
+
+SELECT OrderID, CustomerID
+FROM Orders
+WHERE CustomerID IN (1,6,17,25,39,44,52,56,63,79,86);
+
+Result:
+Number of Records: 25
+OrderID	CustomerID
+10267	25
+10273	63
+10277	52
+10279	44
+10284	44
+10285	63
+10286	63
+10301	86
+10312	86
+10313	63
+10323	39
+10325	39
+10337	25
+10342	25
+10343	44
+10345	63
+10348	86
+10356	86
+10361	63
+10363	17
+10391	17
+10396	25
+10407	56
+10418	63
+10438	79
+
+SELECT COUNT(Quantity), ProductID, OrderID
+FROM OrderDetails
+GROUP BY ProductID
+ORDER BY COUNT(Quantity) Desc;
+
+Result:
+Number of Records: 77
+COUNT(Quantity)	ProductID	OrderID
+14	72	10248
+14	59	10255
+14	31	10253
+13	71	10274
+13	62	10260
+12	60	10252
+12	56	10262
+12	54	10288
+11	68	10288
+11	24	10254
+11	17	10265
+11	2	10255
+10	76	10267
+10	69	10296
+10	53	10256
+10	28	10277
+10	16	10255
+9	65	10250
+9	41	10250
+9	36	10255
+9	35	10261
+9	33	10252
+9	29	10268
+9	19	10281
+9	11	10248
+8	77	10256
+8	75	10280
+8	70	10260
+8	57	10251
+8	40	10267
+8	39	10253
+8	30	10263
+8	26	10330
+8	21	10259
+8	14	10249
+8	1	10285
+7	74	10254
+7	64	10289
+7	55	10254
+7	46	10287
+7	38	10329
+7	13	10276
+6	63	10278
+6	51	10249
+6	49	10253
+6	43	10270
+6	42	10248
+6	34	10287
+5	44	10278
+5	20	10252
+5	18	10293
+5	4	10309
+4	58	10314
+4	25	10323
+4	23	10337
+4	10	10273
+4	5	10258
+3	52	10322
+3	50	10350
+3	47	10332
+3	37	10259
+3	32	10258
+3	27	10257
+2	73	10278
+2	66	10300
+2	61	10418
+2	22	10251
+2	15	10283
+2	12	10266
+2	8	10344
+2	7	10262
+2	6	10309
+2	3	10289
+1	67	10284
+1	48	10403
+1	45	10388
+1	9	10420
+
+SELECT * 
+FROM Products
+WHERE ProductID IN (76,28);
+
+Result:
+Number of Records: 2
+ProductID	ProductName	SupplierID	CategoryID	Unit	Price
+28	Rössle Sauerkraut	12	7	25 - 825 g cans	45.6
+76	Lakkalikööri	23	1	500 ml	18
+# Rössle Sauerkraut and Lakkalikööri are ordered the most by customers in Germany.
